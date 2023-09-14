@@ -1,11 +1,5 @@
 // program menghitung total harga sepatu
 
-//output: 
-// Harga Sepatu : Rp 750.000 
-// Diskon : 10% 
-// Diskon(Rp) : Rp 75.000 
-// Total Harga : Rp 675.000 
-
 void main(List<String> args) {
   var harga = 750000;
   var diskon = 10;
