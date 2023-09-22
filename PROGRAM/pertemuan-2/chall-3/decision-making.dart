@@ -1,4 +1,4 @@
-
+// decision making menggunakan if-else dan ternary operator
 
 void main(){
   int nilai = 90;

@@ -1,11 +1,4 @@
-// Sistem Penilaian Makanan (A - E)
-// # A : Sangat Enak
-// # B : Enak
-// # C : Cukup
-// # D : Kurang
-// # E : Belajar Dulu
-// # Selain itu : Nilai Invalid
-// Buatlah decision makin sistem penilaian diatas menggunakan switch case!
+// penilaian masakan menggunakan switch case
 
 void main(List<String> args) {
   String nilai = 'A';
