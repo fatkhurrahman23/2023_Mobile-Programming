@@ -1,13 +1,3 @@
-// Buatlah class E-Wallet dengan ketentuan sebagai berikut :
-// # Properties :
-// - namaPemilik
-// - saldo
-// - mutasi
-// # Methods:
-// - Getters dan Setters untuk setiap properties
-// - transfer() // dari rekening pemilik
-// - request() // ke rekening pemilik
-
 class EWallet {
   String namaPemilik = "";
   int saldo = 0;
