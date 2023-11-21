@@ -226,7 +226,7 @@ class _AddFormState extends State<AddForm> {
                 style: ButtonStyle(
                   elevation: MaterialStateProperty.all(20), // This adds the shadow
                 ),
-                child: Text('Add Data'),
+                child: Text('Tambah Data'),
               )
             ],
           ),

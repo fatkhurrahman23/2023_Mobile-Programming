@@ -21,9 +21,9 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Center(
         child: Image.network(
-          "https://scontent.cdninstagram.com/v/t39.30808-6/394923287_18396917983000143_6003338133617979780_n.jpg?stp=dst-jpg_e15&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xNDQweDE3OTcuc2RyIn0&_nc_ht=scontent.cdninstagram.com&_nc_cat=103&_nc_ohc=2NsgqJL6-RcAX8rnanr&edm=APs17CUAAAAA&ccb=7-5&_nc_e2o=s&oh=00_AfAl6gotgvgeg4IQCBCJ_OHvIZe9ysPYYPzskiyDz_d_tw&oe=655F9C1B&_nc_sid=10d13b", 
-          width: 300,
-          height: 300,  
+          "https://cdn.icon-icons.com/icons2/2348/PNG/512/contacts_address_book_icon_143029.png", 
+          width: 150,
+          height: 150,  
         )
       ),
     );

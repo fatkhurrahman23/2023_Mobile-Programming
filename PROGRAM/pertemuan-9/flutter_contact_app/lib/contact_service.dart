@@ -49,7 +49,7 @@ class ContactService {
     ); // Menyimpan daftar data ke local storage
   }
 
-  //method untuk mengupdate data ke local storage
+  // method untuk mengupdate data ke local storage
   updateData(
     String name,
     String gender,
@@ -59,35 +59,44 @@ class ContactService {
     String hobby,
     int id,
   ) async {
-    //inisialisasi untuk menggunakan paket
+    // inisialisasi untuk menggunakan paket
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    //mengambil data dari localstorage
+    // mengambil data dari localstorage
     List<String> dataList = prefs.getStringList('contacts') ?? [];
 
-    //membuat variabel objek dengan data yang diisi melalui form
-    Map<String, dynamic> newData = {
-      'name': name,
-      'gender': gender,
-      'email': email,
-      'phone': phone,
-      'address': address,
-      'hobby': hobby,
-    };
-
     // Cari data dengan primary key yang sesuai
-    int dataIndex = -1;
+    bool dataFound = false;
     for (int i = 0; i < dataList.length; i++) {
       Map<String, dynamic> data = jsonDecode(dataList[i]);
       if (data['id'] == id) {
-        dataIndex = i;
+        // Jika data ditemukan, perbarui data tersebut dengan newData
+        dataFound = true;
+        dataList[i] = jsonEncode({
+          'id': id,
+          'name': name,
+          'gender': gender,
+          'email': email,
+          'phone': phone,
+          'address': address,
+          'hobby': hobby,
+        });
         break;
       }
     }
 
-    if (dataIndex != -1) {
-      dataList[dataIndex] = jsonEncode(newData);
-      // Jika data ditemukan, perbarui data tersebut dengan newData
+    // Jika data tidak ditemukan, tambahkan data baru
+    if (!dataFound) {
+      Map<String, dynamic> newData = {
+        'id': id,
+        'name': name,
+        'gender': gender,
+        'email': email,
+        'phone': phone,
+        'address': address,
+        'hobby': hobby,
+      };
+      dataList.add(jsonEncode(newData));
     }
 
     prefs.setStringList(
