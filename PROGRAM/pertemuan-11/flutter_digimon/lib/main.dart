@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Digimon App',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: DigimonList(),
@@ -60,42 +60,68 @@ class _DigimonListState extends State<DigimonList> {
     );
   }
 
+
   Widget buildDigimonList() {
     return ListView.builder(
-      itemCount: digimonList.length,
-      itemBuilder: (context, index) {
-        return buildDigimonListItem(index);
+      itemCount: (digimonList.length / 2).ceil(),
+      itemBuilder: (context, rowIndex) {
+        int index1 = rowIndex * 2;
+        int index2 = index1 + 1;
+        return Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            if (index1 < digimonList.length) buildDigimonCard(index1),
+            if (index2 < digimonList.length) buildDigimonCard(index2),
+          ],
+        );
       },
     );
   }
 
-  Widget buildDigimonListItem(int index) {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: const Color.fromARGB(255, 67, 74, 81),
-            width: 2.0,
-          ),
+  Widget buildDigimonCard(int index) {
+    return Container(
+      padding: const EdgeInsets.only(top: 8),
+      width: 200, // Adjust the width according to your preference
+      child: Card(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
-        child: ListTile(
-          contentPadding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          title: Text(
-            digimonList[index]['name'],
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-          subtitle: Text(
-            'Level: ${digimonList[index]['level']}',
-            style: TextStyle(fontSize: 18, color: Colors.grey),
-          ),
-          leading: CircleAvatar(
-            backgroundImage: NetworkImage(digimonList[index]['img']),
-            radius: 30,
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 100, // Adjust the height of the image container
+              width: 100,  // Adjust the width of the image container
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(digimonList[index]['img']),
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.vertical(top: Radius.circular(10.0)),
+              ),
+            ),
+            ListTile(
+              title: Text(
+                digimonList[index]['name'],
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 8),
+                  Text(
+                    'Level: ${digimonList[index]['level']}',
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                  SizedBox(height: 8),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+
 }
