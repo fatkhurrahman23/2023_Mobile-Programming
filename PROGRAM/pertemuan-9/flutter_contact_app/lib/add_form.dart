@@ -113,6 +113,7 @@ class _AddFormState extends State<AddForm> {
                   validator: (value) {
                     if (value!.isEmpty) {
                       return 'Masukkan Email';
+                      // Validasi input email
                     } else if (!RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$').hasMatch(value)) {
                       return 'Masukkan Email yang valid';
                     }
